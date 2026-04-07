@@ -1,45 +1,44 @@
-import { useEffect, useState } from "react"
-import axios from "axios"
-import { Link } from "react-router-dom"
+import { useEffect, useState } from "react";
+import { fetchVideos } from "../api/videoApi";
+import VideoCard from "../components/VideoCard";
+import FilterButtons from "../components/FilterButtons";
+import { useLocation } from "react-router-dom";
 
-export default function Home() {
-  const [videos, setVideos] = useState([])
+const Home = () => {
+  const [videos, setVideos] = useState([]);
+  const [category, setCategory] = useState("All");
 
-  useEffect(() => {
-    const fetchVideos = async () => {
-      try {
-        const res = await axios.get("http://localhost:5000/api/videos")
-        setVideos(res.data)
-      } catch (err) {
-        console.log(err)
-      }
+  const { search } = useLocation();
+  const searchQuery = new URLSearchParams(search).get("search");
+
+  const getVideos = async () => {
+    try {
+      const res = await fetchVideos({
+        category: category === "All" ? "" : category,
+        search: searchQuery || ""
+      });
+      setVideos(res.data);
+    } catch (err) {
+      console.log(err);
     }
+  };
 
-    fetchVideos()
-  }, [])
+  // 🔥 FIXED HERE
+  useEffect(() => {
+    getVideos();
+  }, [category, searchQuery]);
 
   return (
     <div>
-      <h2 style={{marginLeft:"20px"}}>🔥 Trending Videos</h2>
+      <FilterButtons setCategory={setCategory} />
 
-      <div className="video-grid">
+      <div className="videoGrid">
         {videos.map((video) => (
-          <Link to={`/video/${video._id}`} key={video._id} className="card">
-            
-            <img 
-              src={video.thumbnail} 
-              alt="thumbnail"
-              className="thumbnail"
-            />
-
-            <div className="video-info">
-              <h4>{video.title}</h4>
-              <p>{video.views} views</p>
-            </div>
-
-          </Link>
+          <VideoCard key={video._id} video={video} />
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
+
+export default Home;
