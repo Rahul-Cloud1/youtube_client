@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Register from "./pages/Register";
 import Home from "./pages/Home";
+import Navbar from "./components/Navbar";
 
 import VideoPage from "./pages/VideoPage";
 import ChannelPage from "./pages/ChannelPage";
@@ -12,6 +13,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        
         <Route path="/video/:id" element={<VideoPage />} />
         <Route path="/channel/:id" element={<ChannelPage />} />
         <Route path="/register" element={<Register />} />
