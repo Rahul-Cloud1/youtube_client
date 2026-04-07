@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchVideo, addView, likeVideo, dislikeVideo } from "../api/videoApi";
+import CommentSection from "../components/CommentSection";
 
 const VideoPlayer = () => {
   const { id } = useParams();
@@ -57,6 +58,7 @@ const VideoPlayer = () => {
         <button onClick={handleLike}>👍 {video.likes}</button>
         <button onClick={handleDislike}>👎 {video.dislikes}</button>
         <span>{video.views} views</span>
+      <CommentSection videoId={video._id} />
       </div>
     </div>
   );
