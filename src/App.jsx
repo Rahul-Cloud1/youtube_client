@@ -2,6 +2,8 @@ import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import VideoPlayer from "./pages/VideoPlayer";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 
 function App() {
@@ -11,6 +13,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<h1>Login Page</h1>} />
         <Route path="/video/:id" element={<VideoPlayer />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </Layout>
   );

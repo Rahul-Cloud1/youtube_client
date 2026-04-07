@@ -1,52 +1,42 @@
 import { useState } from "react";
-import API from "../api/axios";
+import { registerUser } from "../api/authApi";
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: ""
+  });
+
   const navigate = useNavigate();
 
-  const [name,setName] = useState("");
-  const [email,setEmail] = useState("");
-  const [password,setPassword] = useState("");
-
-  const handleRegister = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      await API.post("/auth/register", {
-        name,
-        email,
-        password
-      });
-
-      alert("Registration successful! Please login.");
+      await registerUser(form);
+      alert("Registered successfully!");
       navigate("/login");
-
     } catch (err) {
-      alert(err.response.data.message);
+      alert(err.response?.data?.message);
     }
   };
 
   return (
-    <div style={{ padding:"50px" }}>
-      <h1>Register</h1>
+    <form onSubmit={handleSubmit} className="authForm">
+      <h2>Register</h2>
 
-      <input
-        placeholder="Name"
-        onChange={(e)=>setName(e.target.value)}
-      /><br/><br/>
+      <input placeholder="Name"
+        onChange={(e)=>setForm({...form,name:e.target.value})} />
 
-      <input
-        placeholder="Email"
-        onChange={(e)=>setEmail(e.target.value)}
-      /><br/><br/>
+      <input placeholder="Email"
+        onChange={(e)=>setForm({...form,email:e.target.value})} />
 
-      <input
-        placeholder="Password"
-        type="password"
-        onChange={(e)=>setPassword(e.target.value)}
-      /><br/><br/>
+      <input type="password" placeholder="Password"
+        onChange={(e)=>setForm({...form,password:e.target.value})} />
 
-      <button onClick={handleRegister}>Register</button>
-    </div>
+      <button>Register</button>
+    </form>
   );
 };
 

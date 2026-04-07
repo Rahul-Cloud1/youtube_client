@@ -9,10 +9,34 @@ const VideoPlayer = () => {
   const getVideo = async () => {
     try {
       const res = await fetchVideo(id);
+      console.log("VIDEO:", res.data);
       setVideo(res.data);
-      await addView(id); // increase views automatically
+
+      const viewRes = await addView(id);
+      console.log("VIEW RESPONSE:", viewRes.data);
+
     } catch (err) {
-      console.log(err);
+      console.log("GET VIDEO ERROR:", err.response?.data || err.message);
+    }
+  };
+
+  const handleLike = async () => {
+    try {
+      const res = await likeVideo(id);
+      console.log("LIKE RESPONSE:", res.data);
+      getVideo();
+    } catch (err) {
+      console.log("LIKE ERROR:", err.response?.data || err.message);
+    }
+  };
+
+  const handleDislike = async () => {
+    try {
+      const res = await dislikeVideo(id);
+      console.log("DISLIKE RESPONSE:", res.data);
+      getVideo();
+    } catch (err) {
+      console.log("DISLIKE ERROR:", err.response?.data || err.message);
     }
   };
 
@@ -20,25 +44,11 @@ const VideoPlayer = () => {
     getVideo();
   }, [id]);
 
-  const handleLike = async () => {
-    await likeVideo(id);
-    getVideo();
-  };
-
-  const handleDislike = async () => {
-    await dislikeVideo(id);
-    getVideo();
-  };
-
   if (!video) return <h2>Loading...</h2>;
 
   return (
     <div className="videoPage">
-      <video
-        src={video.videoUrl}
-        controls
-        width="800"
-      />
+      <video src={video.videoUrl} controls width="800" />
 
       <h2>{video.title}</h2>
       <p>{video.description}</p>

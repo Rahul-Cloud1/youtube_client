@@ -28,7 +28,7 @@ const Header = ({ toggleSidebar }) => {
       </div>
 
       {user ? (
-        <div className="user">{user.username}</div>
+        <div className="user">{user.name}</div>
       ) : (
         <Link to="/login">
           <button className="loginBtn">
