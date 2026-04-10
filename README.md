@@ -1,16 +1,125 @@
-# React + Vite
+# 🎬 YouTube Clone — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the React frontend of the YouTube Clone project built using Vite.  
+It provides a YouTube-style UI where users can register, login, watch videos, upload videos and comment.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Features
 
-## React Compiler
+### 🔐 Authentication
+- User Register page
+- User Login page
+- Auth state using Context API
+- Protected routes (cannot access app without login)
+- Auto redirect logic
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 🎥 Video Features
+- Home video feed
+- Video player page
+- Like / Dislike buttons
+- View count display
+- Category filter buttons
 
-## Expanding the ESLint configuration
+### 💬 Comments
+- Add comments
+- View comments per video
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 📤 Upload
+- Upload video with thumbnail
+- Protected upload page
+
+### 🎨 UI
+- YouTube inspired dark theme
+- Sidebar navigation
+- Header with search bar
+- Responsive grid layout
+
+---
+
+## 🛠 Tech Stack
+
+| Tech | Usage |
+|---|---|
+| React + Vite | Frontend framework |
+| React Router DOM | Routing |
+| Axios | API calls |
+| Context API | Auth state |
+| CSS | Styling |
+
+---
+
+## 📦 Installation
+
+1️⃣ Open terminal and go to frontend folder:
+
+```bash
+cd youtube-client
+# 🎬 YouTube Clone — Frontend
+
+This is the React frontend of the YouTube Clone project built using Vite.  
+It provides a YouTube-style UI where users can register, login, watch videos, upload videos and comment.
+
+---
+
+## 🚀 Features
+
+### 🔐 Authentication
+- User Register page
+- User Login page
+- Auth state using Context API
+- Protected routes (cannot access app without login)
+- Auto redirect logic
+
+### 🎥 Video Features
+- Home video feed
+- Video player page
+- Like / Dislike buttons
+- View count display
+- Category filter buttons
+
+### 💬 Comments
+- Add comments
+- View comments per video
+
+### 📤 Upload
+- Upload video with thumbnail
+- Protected upload page
+
+### 🎨 UI
+- YouTube inspired dark theme
+- Sidebar navigation
+- Header with search bar
+- Responsive grid layout
+
+---
+
+## 🛠 Tech Stack
+
+| Tech | Usage |
+|---|---|
+| React + Vite | Frontend framework |
+| React Router DOM | Routing |
+| Axios | API calls |
+| Context API | Auth state |
+| CSS | Styling |
+
+---
+
+## 📦 Installation
+
+1️⃣ Open terminal and go to frontend folder:
+
+```bash
+cd youtube-client
+Install dependencies:
+
+npm install
+
+3️⃣ Start development server:
+
+npm run dev
+
+App will run on:
+
+http://localhost:5173
