@@ -73,4 +73,6 @@ App will run on:
 
 ```
 http://localhost:5173
+
+Github Repo - https://github.com/Rahul-Cloud1/youtube_CLIENT
 ```
