@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getComments, addComment } from "../api/commentApi";
+import { getComments, addComment, updateComment, deleteComment } from "../api/commentApi";
 import { useAuth } from "../context/AuthContext";
 import Comment from "./Comment";
 
@@ -30,6 +30,26 @@ const CommentSection = ({ videoId }) => {
     }
   };
 
+  const handleUpdateComment = async (commentId, data) => {
+    try {
+      await updateComment(commentId, data);
+      fetchComments();
+    } catch (err) {
+      console.log(err);
+      throw err;
+    }
+  };
+
+  const handleDeleteComment = async (commentId) => {
+    try {
+      await deleteComment(commentId);
+      fetchComments();
+    } catch (err) {
+      console.log(err);
+      throw err;
+    }
+  };
+
   useEffect(() => {
     fetchComments();
   }, [videoId]);
@@ -49,7 +69,12 @@ const CommentSection = ({ videoId }) => {
       )}
 
       {comments.map((c) => (
-        <Comment key={c._id} comment={c} />
+        <Comment
+          key={c._id}
+          comment={c}
+          onUpdate={handleUpdateComment}
+          onDelete={handleDeleteComment}
+        />
       ))}
     </div>
   );

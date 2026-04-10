@@ -2,9 +2,13 @@ const filters = ["All", "Music", "Gaming", "News", "Sports", "Learning", "Podcas
 
 const FilterButtons = ({ setCategory }) => {
   return (
-    <div className="filters">
+    <div className="categories">
       {filters.map((item) => (
-        <button key={item} onClick={() => setCategory(item)}>
+        <button
+          key={item}
+          className="categoryBtn"
+          onClick={() => setCategory(item)}
+        >
           {item}
         </button>
       ))}

@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 
-const Sidebar = ({ isOpen }) => {
+const Sidebar = () => {
   return (
-    <div className={`sidebar ${isOpen ? "open" : ""}`}>
-      <Link to="/">Home</Link>
-      <Link to="/">Subscriptions</Link>
-      <Link to="/">Library</Link>
-      <Link to="/">History</Link>
-      <Link to="/">Your Videos</Link>
-      <Link to="/">Watch Later</Link>
+    <div className="sidebar">
+      <Link to="/home"><p>Home</p></Link>
+      <p>Subscriptions</p>
+      <p>Library</p>
+      <p>History</p>
+      <p>Your Videos</p>
+      <p>Watch Later</p>
     </div>
   );
 };

@@ -17,7 +17,8 @@ const Home = () => {
         category: category === "All" ? "" : category,
         search: searchQuery || ""
       });
-      setVideos(res.data);
+      // Extract videos array from new response format
+      setVideos(res.data.videos || res.data);
     } catch (err) {
       console.log(err);
     }
@@ -31,12 +32,13 @@ const Home = () => {
   return (
     <div>
       <FilterButtons setCategory={setCategory} />
+    
 
       <div className="videoGrid">
-        {videos.map((video) => (
-          <VideoCard key={video._id} video={video} />
-        ))}
-      </div>
+  {videos.map(video => (
+    <VideoCard key={video._id} video={video} />
+  ))}
+</div>
     </div>
   );
 };
